@@ -7,7 +7,10 @@ export default function Home() {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <Title />
+        <Title text="Where do" style={{fontWeight: 'normal'}} />
+        <Title text="you want to go?" />
+
+        <Title text="Explore Attractions" style={styles.subtitle} />
       </View>
     </SafeAreaView>
   );
