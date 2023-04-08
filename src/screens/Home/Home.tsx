@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {View, SafeAreaView} from 'react-native';
+import AttractionCard from '../../components/AttractionCard/AttractionCard';
 import Categories from '../../components/Categories/Categories';
 import Title from '../../components/Title/Title';
 import {styles} from './styles';
@@ -34,6 +35,23 @@ export default function Home() {
           categories={categories}
           handleSelectCategory={handleSelectCategory}
         />
+
+        <View style={styles.row}>
+          <AttractionCard
+            title="Enertainment Park"
+            subtitle="Rome"
+            imageSrc={
+              'https://www.petitfute.com/medias/mag/12133/835/8896-les-10-parcs-d-attraction.jpg'
+            }
+          />
+          <AttractionCard
+            title="Enertainment Park"
+            subtitle="Rome"
+            imageSrc={
+              'https://www.petitfute.com/medias/mag/12133/835/8896-les-10-parcs-d-attraction.jpg'
+            }
+          />
+        </View>
       </View>
     </SafeAreaView>
   );
