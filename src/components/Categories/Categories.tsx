@@ -1,22 +1,30 @@
 import React from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {Text, FlatList, TouchableOpacity} from 'react-native';
 import {styles} from './styles';
 
 interface CategoriesProps {
   categories: string[];
   selectedCategory: string;
+  handleSelectCategory: (category: string) => void;
 }
 
-function Categories({categories, selectedCategory}: CategoriesProps) {
+function Categories({
+  categories,
+  selectedCategory,
+  handleSelectCategory,
+}: CategoriesProps) {
   return (
     <FlatList
       horizontal
+      style={styles.flatList}
+      showsHorizontalScrollIndicator={false}
       data={categories}
       renderItem={({item}) => {
         const selected = selectedCategory === item;
 
         return (
-          <View
+          <TouchableOpacity
+            onPress={() => handleSelectCategory(item)}
             style={[
               styles.itemContainer,
               selected ? styles.selectedItemContainer : {},
@@ -24,7 +32,7 @@ function Categories({categories, selectedCategory}: CategoriesProps) {
             <Text style={[styles.item, selected ? styles.selectedItem : {}]}>
               {item}
             </Text>
-          </View>
+          </TouchableOpacity>
         );
       }}
     />

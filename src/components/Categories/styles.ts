@@ -1,6 +1,9 @@
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
+  flatList: {
+    marginRight: -32,
+  },
   item: {
     fontSize: 12,
     color: 'rgba(0,0,0,0.5)',
