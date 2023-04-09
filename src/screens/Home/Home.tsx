@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
-import {View, SafeAreaView} from 'react-native';
+import {View, SafeAreaView, ScrollView} from 'react-native';
 import AttractionCard from '../../components/AttractionCard/AttractionCard';
 import Categories from '../../components/Categories/Categories';
 import Title from '../../components/Title/Title';
+import attraction from '../../data/attractions.json';
+import {Attraction} from './Home.config';
 import {styles} from './styles';
 
 const categories = [
@@ -17,6 +19,8 @@ const categories = [
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [attractionData, setAttractionData] =
+    useState<Attraction[]>(attraction);
 
   const handleSelectCategory = (category: string) => {
     setSelectedCategory(category);
@@ -36,22 +40,16 @@ export default function Home() {
           handleSelectCategory={handleSelectCategory}
         />
 
-        <View style={styles.row}>
-          <AttractionCard
-            title="Enertainment Park"
-            subtitle="Rome"
-            imageSrc={
-              'https://www.petitfute.com/medias/mag/12133/835/8896-les-10-parcs-d-attraction.jpg'
-            }
-          />
-          <AttractionCard
-            title="Enertainment Park"
-            subtitle="Rome"
-            imageSrc={
-              'https://www.petitfute.com/medias/mag/12133/835/8896-les-10-parcs-d-attraction.jpg'
-            }
-          />
-        </View>
+        <ScrollView contentContainerStyle={styles.row}>
+          {attractionData.map(attraction => (
+            <AttractionCard
+              key={attraction.id}
+              title={attraction.name}
+              subtitle={attraction.city}
+              imageSrc={attraction.images[0]}
+            />
+          ))}
+        </ScrollView>
       </View>
     </SafeAreaView>
   );

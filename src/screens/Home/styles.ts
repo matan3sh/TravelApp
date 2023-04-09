@@ -12,5 +12,7 @@ export const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 6,
   },
 });
