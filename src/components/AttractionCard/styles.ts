@@ -4,12 +4,11 @@ const {width} = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
   card: {
-    marginRight: 4,
-    padding: 4,
+    padding: 10,
     borderWidth: 1,
     borderColor: '#E2E2E2',
     borderRadius: 15,
-    marginBottom: 12,
+    margin: 12,
   },
   image: {
     width: (width - 102) / 2,

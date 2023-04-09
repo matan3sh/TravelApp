@@ -2,17 +2,18 @@ import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
-    margin: 32,
+    flex: 1,
+  },
+  flatList: {
+    flexGrow: 1,
   },
   subtitle: {
     fontSize: 20,
     color: '#000000',
     marginTop: 40,
-    marginBottom: 18,
   },
-  row: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 6,
+  header: {
+    margin: 32,
+    marginLeft: 18,
   },
 });

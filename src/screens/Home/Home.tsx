@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, SafeAreaView, ScrollView} from 'react-native';
+import {FlatList, SafeAreaView, View} from 'react-native';
 import AttractionCard from '../../components/AttractionCard/AttractionCard';
 import Categories from '../../components/Categories/Categories';
 import Title from '../../components/Title/Title';
@@ -27,30 +27,36 @@ export default function Home() {
   };
 
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
-        <Title text="Where do" style={{fontWeight: 'normal'}} />
-        <Title text="you want to go?" />
+    <SafeAreaView style={styles.container}>
+      <FlatList<Attraction>
+        style={styles.flatList}
+        numColumns={2}
+        ListHeaderComponent={
+          <>
+            <View style={styles.header}>
+              <Title text="Where do" style={{fontWeight: 'normal'}} />
+              <Title text="you want to go?" />
 
-        <Title text="Explore Attractions" style={styles.subtitle} />
+              <Title text="Explore Attractions" style={styles.subtitle} />
+            </View>
 
-        <Categories
-          selectedCategory={selectedCategory}
-          categories={categories}
-          handleSelectCategory={handleSelectCategory}
-        />
-
-        <ScrollView contentContainerStyle={styles.row}>
-          {attractionData.map(attraction => (
-            <AttractionCard
-              key={attraction.id}
-              title={attraction.name}
-              subtitle={attraction.city}
-              imageSrc={attraction.images[0]}
+            <Categories
+              selectedCategory={selectedCategory}
+              categories={categories}
+              handleSelectCategory={handleSelectCategory}
             />
-          ))}
-        </ScrollView>
-      </View>
+          </>
+        }
+        data={attractionData}
+        keyExtractor={attraction => String(attraction.id)}
+        renderItem={({item}) => (
+          <AttractionCard
+            title={item.name}
+            subtitle={item.city}
+            imageSrc={item.images[0]}
+          />
+        )}
+      />
     </SafeAreaView>
   );
 }
