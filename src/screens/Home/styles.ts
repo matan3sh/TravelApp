@@ -16,4 +16,10 @@ export const styles = StyleSheet.create({
     margin: 32,
     marginLeft: 18,
   },
+  notFound: {
+    textAlign: 'center',
+    marginTop: 40,
+    fontSize: 12,
+    color: 'rgba(0,0,0,0.5)',
+  },
 });
