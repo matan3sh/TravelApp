@@ -1,11 +1,15 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {SafeAreaView, Text} from 'react-native';
+import {styles} from './styles';
+import {useNavigation} from '@react-navigation/native';
 
 function AttractionDetails() {
+  const navigation = useNavigation();
+
   return (
-    <View>
+    <SafeAreaView style={styles.container}>
       <Text>AttractionDetail</Text>
-    </View>
+    </SafeAreaView>
   );
 }
 

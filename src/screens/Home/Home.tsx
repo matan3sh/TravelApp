@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, SafeAreaView, Text, View} from 'react-native';
 
+import type {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../../../App';
+
 import AttractionCard from '../../components/AttractionCard/AttractionCard';
 import Categories from '../../components/Categories/Categories';
 import Title from '../../components/Title/Title';
@@ -11,7 +14,9 @@ import categories from '../../data/categories.json';
 
 import {styles} from './styles';
 
-export default function Home() {
+type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
+
+export default function Home({navigation}: Props) {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [attractionData, setAttractionData] = useState<Attraction[]>([]);
 
@@ -63,6 +68,9 @@ export default function Home() {
             title={item.name}
             subtitle={item.city}
             imageSrc={item.images[0]}
+            onPress={() =>
+              navigation.navigate('AttractionDetails', {attractionId: item.id})
+            }
           />
         )}
       />
